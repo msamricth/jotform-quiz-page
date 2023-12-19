@@ -7,12 +7,19 @@ html(lang="en")
     //- in the package.json file
     if config.entry.css.embed
       link(rel="stylesheet" href=`${embedPath}` embed)
+
+    script(type="text/javascript" src="//use.typekit.net/ik/LJn79vXf__aUaFesC2EnGgYk5Q776_tYZb3bsFpePj3fe7JIfFHN4UJLFRbh52jhWD9t5Qb3jQ88jRFqjR4KjQ9tZQJtwRwUZy7KMkG0jAFu-WsoShFGZAsude80ZkoRdhXCHKoyjamTiY8Djhy8ZYmC-Ao1Oco8if37OcBDOcu8OfG0ZAsajW4qOWFudeUTicB0OQFlZYq0SaBujW48Sagyjh90jhNlOfG0SaBujW48SagyjhmDjhy8ZYmC-Ao1OcFzdPUyjamTiY8Djhy8ZYmC-Ao1OcFzdPUyjamTiY8Djhy8ZYmC-Ao1Oco8ifUySkolZPU8ZYiyScblSamCde8hjAtlwhuqpPoDSWmyScmDSeBRZPoRdhXCdeNRjAUGdaFXOYFUiABkZWF3jAF8ShFGZAsude80ZkoRdhXCicmCdhFTiY8RdhBR-e80ZkoRdhXCiaiaOcBRiA8XpWFR-emqiAUTdcS0jhNlOYiaikoyjamTiY8Djhy8ZYmC-Ao1Oco8ifUaiaS0jWw0dA9CiaiaOcmqihBkZfuDiAUC-WZydKXDdAsoO1FUiABkZWF3jAF8OcFzdPUaiaS0SaBujW48SagyjhmDjhy8ZYmC-Ao1OcFzdPUaiaS0icmCdhFTiY8RdhBR-e80ZkoRdhXK2ABnie8hOAikdas8ShC7fbRbdsMMeMb6MKG4fFZlIMMjgPMfH6qJXcXbMg6YJMJ7fbRsdsMMeMt6MKG4fFilIMMj2kMfH6qJXhXbMg6sJMHbM-RAaHqe.js")
+    script(type="text/javascript") try{Typekit.load();}catch(e){}
+    link(rel="stylesheet" href="https://static1.squarespace.com/static/versioned-site-css/58940a9eb3db2ba58e28231f/134/5c5a519771c10ba3470d8101/6537264d14d7ed4bf35ffacc/1471/site.css")
+    link(rel="stylesheet" href="https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1699467906351-57EZFPH2B9UY1CKJS6AA/static.css")
+
+
   body
     .content
-      block awesome-content
+      block response
     //- The style.css is at the bottom so it doesn't
     //- block the loading of assets
     if config.entry.css.external
       link(rel="stylesheet", href=`${baseUrl}style.css`)
 
-    //- script(src='bundle.js')
+    script(src='bundle.js')
