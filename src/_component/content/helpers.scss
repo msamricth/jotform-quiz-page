@@ -1,12 +1,14 @@
-.text-uppercase {
-    text-transform: uppercase;
-}
-.text-capitalize {
-    text-transform: capitalize;
-}
-.text-black {
-    color:black;
-}
-.font-weight-bold {
-    font-weight: bold;
+.results-page, .landing {
+    .text-uppercase {
+        text-transform: uppercase !important;
+    }
+    .text-capitalize {
+        text-transform: capitalize;
+    }
+    .text-black {
+        color:black;
+    }
+    .font-weight-bold {
+        font-weight: bold;
+    }
 }

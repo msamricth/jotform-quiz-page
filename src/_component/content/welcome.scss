@@ -41,13 +41,13 @@
 html {
   scroll-behavior: smooth;
 }
-
 .results-section {
-  --secondaryButtonBackgroundColor: hsl(202, 100%, 50%);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.6s ease-out, fade-out 0.4s ease-out both;
-
+}
+.results-section, .landing {
+  --secondaryButtonBackgroundColor: hsl(202, 100%, 50%);
   strong {
     color: var(--secondaryButtonBackgroundColor);
   }
@@ -95,5 +95,17 @@ html {
     color: black;
     text-decoration: underline;
     margin-bottom: 4px;
+  }
+
+  .scores ul {
+    margin-bottom: 1.67em;
+    padding: 0;
+    font-weight: bold;
+    color: black;
+  }
+
+  .scoring {
+    margin-bottom: 1.67em;
+    color: black;
   }
 }

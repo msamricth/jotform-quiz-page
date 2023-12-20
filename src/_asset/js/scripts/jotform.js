@@ -20,24 +20,26 @@ import {
 import { btnCollapse, resizeEvent } from './functions.js';
 
 const app = document.getElementById('app');
-var isAxiosLoaded;
-const observer = new MutationObserver((mutations) => {
-    if (mutations[0].attributeName === 'class') {
+if (app) {
+    var isAxiosLoaded;
+    const observer = new MutationObserver((mutations) => {
+        if (mutations[0].attributeName === 'class') {
 
-        isAxiosLoaded = app.classList.contains('axios-loaded');
+            isAxiosLoaded = app.classList.contains('axios-loaded');
 
-        if (isAxiosLoaded) {
-            window.scrollTo(0, 0);
-            startApp();
-            OBSDisconnect();
+            if (isAxiosLoaded) {
+                window.scrollTo(0, 0);
+                startApp();
+                OBSDisconnect();
 
+            }
         }
-    }
-});
-observer.observe(app, { attributes: true });
+    });
+    observer.observe(app, { attributes: true });
 
-function OBSDisconnect() {
-    observer.disconnect();
+    function OBSDisconnect() {
+        observer.disconnect();
+    }
 }
 function startApp() {
     axios
@@ -107,7 +109,7 @@ function startApp() {
                         );
                         sectionOneSubTitle.classList = 'text-uppercase';
                         sectionOneSubTitle.innerHTML = button1;
-                        sectionOneTitle.innerHTML = titleMain + " <strong>" + titlePart1+"</strong>";
+                        sectionOneTitle.innerHTML = titleMain + " <strong>" + titlePart1 + "</strong>";
                         const sectionOneLead = sectionOne.appendChild(
                             document.createElement("p")
                         );
@@ -129,16 +131,16 @@ function startApp() {
                         const perfectionistPercentageList = scoresList.appendChild(
                             document.createElement("li")
                         );
-                        perfectionistPercentageList.innerHTML = "1. PERFECTIONIST " + perfectionistPercentage + "%";
+                        perfectionistPercentageList.innerHTML = "1. PERFECTIONIST: " + perfectionistPercentage + "%";
 
                         const peoplePleaserPercentageList = scoresList.appendChild(
                             document.createElement("li")
                         );
-                        peoplePleaserPercentageList.innerHTML = "2. PEOPLE PLEASER " + peoplePleaserPercentage + "%";
+                        peoplePleaserPercentageList.innerHTML = "2. PEOPLE PLEASER: " + peoplePleaserPercentage + "%";
                         const imposterPercentageList = scoresList.appendChild(
                             document.createElement("li")
                         );
-                        imposterPercentageList.innerHTML = "3. IMPOSTER " + imposterPercentage + "%";
+                        imposterPercentageList.innerHTML = "3. IMPOSTER: " + imposterPercentage + "%";
 
                         const scoringContainer = sectionOne.appendChild(
                             document.createElement("div")
@@ -149,17 +151,17 @@ function startApp() {
                         );
                         scoring.classList = 'score-label';
                         scoring.innerHTML = "SCORING:";
-                        const archetypeTypeContainer = sectionOne.appendChild(
+                        const archetypeTypeContainer = scoringContainer.appendChild(
                             document.createElement("span")
                         );
-                        archetypeTypeContainer.classList='font-weight-bold';
+                        archetypeTypeContainer.classList = 'font-weight-bold';
                         archetypeTypeContainer.innerHTML = "Your fear archetype: <strong class='text-uppercase'>" + archetypeType + "</strong><br>";
 
-                        const fearRespose = sectionOne.appendChild(
+                        const fearRespose = scoringContainer.appendChild(
                             document.createElement("span")
                         );
-                        fearRespose.classList='font-weight-bold';
-                        fearRespose.innerHTML =  "Your fear response:: <strong class='text-uppercase'>" + fear_response + "</strong>";
+                        fearRespose.classList = 'font-weight-bold';
+                        fearRespose.innerHTML = "Your fear response: <strong class='text-uppercase'>" + fear_response + "</strong>";
 
                         const fearIntro = sectionOne.appendChild(
                             document.createElement("p")
@@ -173,8 +175,8 @@ function startApp() {
                         const sectionOneBtn = sectionOneBtnContainer.appendChild(
                             document.createElement("button")
                         );
-                        sectionOneBtn.dataset.target  = "#part-2";
-                        sectionOneBtn.classList = "results-section--btn btn-next sqs-block-button-element--medium sqs-button-element--secondary sqs-block-button-element";
+                        sectionOneBtn.dataset.target = "#part-2";
+                        sectionOneBtn.classList = "results-section--btn btn-next sqs-block-button-element--medium sqs-button-element--secondary sqs-block-button-element text-uppercase";
                         sectionOneBtn.innerHTML = button2 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
 
 
@@ -191,8 +193,8 @@ function startApp() {
                         const sectionTwoTitle = sectionTwo.appendChild(
                             document.createElement("h1")
                         );
-                        sectionTwoTitle.innerHTML = titleMain + " <strong>" + titlePart2+"</strong>";
-                        
+                        sectionTwoTitle.innerHTML = titleMain + " <strong>" + titlePart2 + "</strong>";
+
                         const sectionTwoHR = sectionTwo.appendChild(
                             document.createElement("hr")
                         );
@@ -216,16 +218,16 @@ function startApp() {
                             document.createElement("button")
                         );
                         sectionTwoBtn.dataset.target = "#part-1";
-                        sectionTwoBtn.classList = "results-section--btn btn-prev sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element";
+                        sectionTwoBtn.classList = "results-section--btn btn-prev sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element text-uppercase";
                         sectionTwoBtn.innerHTML = button1 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
 
                         const sectionTwoBtnNext = sectionTwoBtnContainer.appendChild(
                             document.createElement("button")
                         );
-                        sectionTwoBtnNext.dataset.target  = "#part-1";
-                        sectionTwoBtnNext.classList = "results-section--btn btn-next sqs-block-button-element--medium sqs-button-element--secondary sqs-block-button-element";
+                        sectionTwoBtnNext.dataset.target = "#part-1";
+                        sectionTwoBtnNext.classList = "results-section--btn btn-next sqs-block-button-element--medium sqs-button-element--secondary sqs-block-button-element text-uppercase";
                         sectionTwoBtnNext.innerHTML = button3 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
-                       
+
 
 
                         // Section Three
@@ -238,7 +240,7 @@ function startApp() {
                             document.createElement("h1")
                         );
                         sectionThreeTitle.innerHTML = titleMain + " <strong>" + titlePart3 + "</strong>";
-                        
+
                         const sectionThreeHR = sectionThree.appendChild(
                             document.createElement("hr")
                         );
@@ -276,7 +278,7 @@ function startApp() {
 
                         });
 
-                        
+
                         const sectionThreeBtnContainer = sectionThree.appendChild(
                             document.createElement("div")
                         );
@@ -284,8 +286,8 @@ function startApp() {
                         const sectionThreeBtn = sectionThreeBtnContainer.appendChild(
                             document.createElement("button")
                         );
-                        sectionThreeBtn.dataset.target  = "#part-2";
-                        sectionThreeBtn.classList = "results-section--btn btn-prev sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element";
+                        sectionThreeBtn.dataset.target = "#part-2";
+                        sectionThreeBtn.classList = "results-section--btn btn-prev sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element text-uppercase";
                         sectionThreeBtn.innerHTML = button2 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
 
 
@@ -307,7 +309,7 @@ function startApp() {
                         sectionThreeBtn.addEventListener("click", function () {
                             btnCollapse(sectionTwo, sectionThree)
                         });
-                        window.addEventListener("resize", function(){
+                        window.addEventListener("resize", function () {
                             resizeEvent();
                         })
 
