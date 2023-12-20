@@ -1,47 +1,99 @@
-.welcome {
-  max-width: 960px;
-  margin: 0 auto;
-
-  &__title {
-    text-align: center;
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1
   }
 
-  &__info {
-    line-height: 1.5;
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
-    text-align: justify;
+  100% {
+    opacity: 0
+  }
+}
 
-    &::first-letter {
-      font-size: 2rem;
-    }
+@keyframes fade-out {
+  0% {
+    opacity: 1
+  }
 
-    &::first-line {
-      font-size: 1.5rem;
-    }
+  100% {
+    opacity: 0
+  }
+}
 
-    &:nth-child(4n + 1) {
-      color: hsl(216, 72%, 21%);
-      border: 2px solid hsl(216, 72%, 21%);
-      background-color: hsl(216, 72%, 91%);
-    }
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0
+  }
 
-    &:nth-child(4n + 2) {
-      color: hsl(120, 100%, 20%);
-      border: 2px solid hsl(120, 100%, 20%);
-      background-color: hsl(120, 100%, 90%);
-    }
+  100% {
+    opacity: 1
+  }
+}
 
-    &:nth-child(4n + 3) {
-      color: hsl(17, 54%, 15%);
-      border: 2px solid hsl(17, 54%, 15%);
-      background-color: hsl(17, 54%, 95%);
-    }
+@keyframes fade-in {
+  0% {
+    opacity: 0
+  }
 
-    &:nth-child(4n + 4) {
-      color: hsl(275, 100%, 25%);
-      border: 2px solid hsl(275, 100%, 25%);
-      background-color: hsl(275, 100%, 95%);
+  100% {
+    opacity: 1
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.results-section {
+  --secondaryButtonBackgroundColor: hsl(202, 100%, 50%);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-out, fade-out 0.4s ease-out both;
+
+  strong {
+    color: var(--secondaryButtonBackgroundColor);
+  }
+
+  &--part-two {
+    .results-section--btn-container {
+      margin-top: 120px;
     }
+  }
+
+  &--btn-container {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &.active {
+    -webkit-animation: fade-in .4s cubic-bezier(.39, .575, .565, 1.000) both;
+    animation: fade-in .4s cubic-bezier(.39, .575, .565, 1.000) both;
+  }
+
+  .btn-next {
+    margin-left: auto;
+  }
+
+  .btn-prev:hover {
+    opacity: .6;
+  }
+
+  hr {
+    border: none;
+    color: #bbb;
+    background-color: var(--tweak-line-block-line-color);
+    height: 1px;
+  }
+
+  h3 {
+    opacity: .6;
+    margin-bottom: 0;
+  }
+
+  .score-label {
+    font-style: var(--body-font-font-style);
+    font-weight: bold;
+    color: black;
+    text-decoration: underline;
+    margin-bottom: 4px;
   }
 }
