@@ -7,3 +7,5 @@ package-lock.json
 .vscode
 .publish
 .pnp*
+dist
+dist-*
