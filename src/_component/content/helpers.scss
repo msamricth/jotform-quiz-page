@@ -1,14 +1,24 @@
-.results-page, .landing {
-    .text-uppercase {
-        text-transform: uppercase !important;
+.jotform-quiz-integration {
+
+    .results-page,
+    .landing {
+        .text-uppercase {
+            text-transform: uppercase !important;
+        }
+
+        .text-capitalize {
+            text-transform: capitalize;
+        }
+
+        .text-black {
+            color: black;
+        }
+
+        .font-weight-bold {
+            font-weight: bold;
+        }
     }
-    .text-capitalize {
-        text-transform: capitalize;
-    }
-    .text-black {
-        color:black;
-    }
-    .font-weight-bold {
-        font-weight: bold;
-    }
+}
+.text-center{
+    text-align: center;
 }

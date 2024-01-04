@@ -22,7 +22,7 @@
     "pnp": false
   },
   "config": {
-    "customUrl": "//pug.wowjob.dev",
+    "customUrl": "//velocity-quiz.netlify.app",
     "githubUrl": "http://github.com/marianzburlea/pug-starter.git",
     "deployToGithubIo": false,
     "directory": {

@@ -5,16 +5,28 @@ import {
     imposter_coaching_link
 } from './imposter.js';
 import {
+    perfectionist_fear_response,
+    perfectionist_fear_intro,
+    perfectionist_coaching_link,
+    perfectionist_questions
+} from './perfectionist.js';
+import {
+    peoplePleaser_fear_response,
+    peoplePleaser_fear_intro,
+    peoplePleaser_coaching_link,
+    peoplePleaser_questions
+} from './peopepleaser.js';
+import {
     titleMain,
     titlePart1,
     titlePart2,
     titlePart3,
     introduction,
     partTwo,
+    partThree,
     button1,
     button2,
-    button3,
-    questions
+    button3
 } from './globals.js';
 
 import { btnCollapse, resizeEvent } from './functions.js';
@@ -65,7 +77,7 @@ function startApp() {
                     var id = data[i].id,
                         currentQuestion;
                     var email = data[i].answers[45].answer,
-                        fear_response, fear_intro, coaching_link;
+                        fear_response, fear_intro, coaching_link, questions;
                     console.log(email)
 
                     var SP_slug = location.search.substring(1);
@@ -83,12 +95,24 @@ function startApp() {
 
 
                         if (archetypeType.includes('imposter')) {
-
-
                             fear_response = imposter_fear_response;
                             fear_intro = imposter_fear_intro;
                             coaching_link = imposter_coaching_link;
+                            questions = imposter_questions;
                         }
+                        if (archetypeType.includes('people pleaser')) {
+                            fear_response = peoplePleaser_fear_response;
+                            fear_intro = peoplePleaser_fear_intro;
+                            coaching_link = peoplePleaser_coaching_link;
+                            questions =  peoplePleaser_questions;
+                        }
+                        if (archetypeType.includes('perfectionist')) {
+                            fear_response = perfectionist_fear_response;
+                            fear_intro = perfectionist_fear_intro;
+                            coaching_link = perfectionist_coaching_link;
+                            questions = perfectionist_questions;
+                        }
+
                         const resultsPage = app.appendChild(
                             document.createElement("div")
                         );
@@ -99,7 +123,7 @@ function startApp() {
                         sectionOne.classList = "results-section results-section--part-one";
                         sectionOne.id = "part-1";
                         const sectionOneTitle = sectionOne.appendChild(
-                            document.createElement("h1")
+                            document.createElement("h2")
                         );
                         const sectionOneHR = sectionOne.appendChild(
                             document.createElement("hr")
@@ -191,7 +215,7 @@ function startApp() {
 
                         sectionTwo.id = "part-2";
                         const sectionTwoTitle = sectionTwo.appendChild(
-                            document.createElement("h1")
+                            document.createElement("h2")
                         );
                         sectionTwoTitle.innerHTML = titleMain + " <strong>" + titlePart2 + "</strong>";
 
@@ -237,7 +261,7 @@ function startApp() {
                         sectionThree.classList = "results-section results-section--part-three";
 
                         const sectionThreeTitle = sectionThree.appendChild(
-                            document.createElement("h1")
+                            document.createElement("h2")
                         );
                         sectionThreeTitle.innerHTML = titleMain + " <strong>" + titlePart3 + "</strong>";
 
@@ -263,7 +287,7 @@ function startApp() {
                             const questionh3 = questionContainer.appendChild(
                                 document.createElement("h3")
                             );
-                            questionh3.innerHTML = currentQuestion;
+                            questionh3.innerHTML = "<strong>"+currentQuestion+"</strong>";
 
                             const listContainer = questionContainer.appendChild(
                                 document.createElement("ul")
@@ -277,8 +301,11 @@ function startApp() {
                             })
 
                         });
-
-
+                        const partThreeContainer = sectionThree.appendChild(
+                            document.createElement("p")
+                        );
+                        let coachingLink = "<a href="+coaching_link+">Learn more about coaching.</a>";
+                        partThreeContainer.innerHTML = partThree + " " + coachingLink;
                         const sectionThreeBtnContainer = sectionThree.appendChild(
                             document.createElement("div")
                         );
@@ -290,7 +317,12 @@ function startApp() {
                         sectionThreeBtn.classList = "results-section--btn btn-prev sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element text-uppercase";
                         sectionThreeBtn.innerHTML = button2 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
 
-
+                        const sectionThreeCTA = sectionThreeBtnContainer.appendChild(
+                            document.createElement("button")
+                        );
+                        sectionThreeCTA.href = coaching_link;
+                        sectionThreeCTA.classList = "sqs-block-button-element--medium sqs-button-element--primary take-assement-btn sqs-block-button-element text-uppercase";
+                        sectionThreeCTA.innerHTML = "learn more";
 
                         sectionOne.style.maxHeight = sectionOne.scrollHeight + "px";
                         sectionOne.classList.add("active");
