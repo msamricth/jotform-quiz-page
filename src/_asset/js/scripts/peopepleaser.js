@@ -1,17 +1,13 @@
 const peoplePleaser_fear_response = 'FREEZE',
 
-    peoplePleaser_fear_intro = "The <strong>PEOPLE PLEASER</strong> archetype had a core fear of not being liked, or not being accepted. Therefore they ﬁnd it diﬃcult to deliver bad news, and likely avoid diﬃcult conversations to the point of ‘ﬂight’ away from situations. This Archetype spends a great deal of time making sure everyone on a team gets a voice, and hoping for consensus. Eventually the avoidance of decisions may cause turmoil within a team. While the PEOPLE PLEASER is a great listener, and very loyal, the over focus on keeping the team happy may lead to a lack of clear performance feedback and politics running rampant.  ",
+    peoplePleaser_fear_intro = "The PEOPLE PLEASER archetype has a core fear of not being liked or accepted. Therefore they ﬁnd it diﬃcult to deliver bad news, and likely avoid diﬃcult conversations to the point of ‘ﬂight’ away from situations.<br><br>This Archetype spends a great deal of time making sure everyone on a team gets a voice, and hoping for consensus. Eventually the avoidance of decisions may cause turmoil within a team. While the PEOPLE PLEASER is a great listener, and very loyal, the over focus on keeping the team happy could lead to an inability to give and receive feedback, increased politics within the team, and a loss of credibility and confidence in leadership. ",
 
     peoplePleaser_coaching_link = '#',
-    question_set1 = ["Now that we’ve named your fear, what may be behind it? (understanding the origin can make the fear your ally!)", "Who can you share this fear with?", "HHow can you make this fear your ally - having a tendency to be a people pleaser means you value consensus and care a great deal about team culture - how might you use this without letting it take you to the FLIGHT extreme?", "How can you commit to giving honest feedback?"],
+    question_set1 = ["<strong>Get Honest:</strong> How does the FLIGHT reaction drive you to avoid conflict, sharing bad news, and holding others accountable? Where have you seen that behavior in yourself in recent months?","<strong>Get Feedback:</strong> Ask a team member you can trust, in what ways have you avoided difficult conversations or let hard decisions linger because you couldn’t find a solution that made everyone happy? "],
 
-    question_set2 = ["How might you share your fear with your team, and ask how it’s affecting them?",
-        "How does People Pleasing drive you to avoid giving feedback, or hold people accountable? How might you change this?",
-        "Are you over using consensus, rather than sharing bad news or making the call yourself? How might you change this?"],
+    question_set2 = ["<strong>Find Your Superpower:</strong> Ironically, your compassion and care for others would likely make you the ideal person to share hard feedback or bad news. How can you talk to your team about leveraging that superpower of yours and spend more time getting real with others? "],
 
-    question_set3 = ["What might your team members be most afraid of?",
-        "What could you say or do to address their fear with compassion instead of with your own fear response?",
-        "Do you see People Pleasing in members of your team ? If they are overly loyal to employees who are no longer effective in their roles, can you pair them with other team members to coach them to give important feedback or deliver bad news?"];
+    question_set3 = ["<strong>Look in the Mirror:</strong> Who on your team can hold up a mirror for you when you take your superpower too far and start putting peoples’ feelings or your relationship with them above what’s best for the business?", "<strong>Confront the Fear:</strong> How can you identify what is causing you to feel fear in that moment? How true is that fear? How can you use that energy to feel motivated rather than fearful?"];
 
 
 var peoplePleaser_questions = {
@@ -21,21 +17,21 @@ var peoplePleaser_questions = {
 peoplePleaser_questions.features.push({
     type: "Feature",
     properties: {
-        question: "How does this Fear Archetype affect you?",
+        question: "STEP 1: Determine how fear affects the way you show up at work",
         list: question_set1
     }
 });
 peoplePleaser_questions.features.push({
     type: "Feature",
     properties: {
-        question: "How does this Fear Archetype affect the way you show up for your team?",
+        question: "STEP 2: Make your fear your ally",
         list: question_set2
     }
 });
 peoplePleaser_questions.features.push({
     type: "Feature",
     properties: {
-        question: "How do you see this fear in your team?",
+        question: "STEP 3: Ask someone to hold you accountable",
         list: question_set3
     }
 });

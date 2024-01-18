@@ -26,7 +26,9 @@ import {
     partThree,
     button1,
     button2,
-    button3
+    button3,
+    book_link,
+    coaching_link
 } from './globals.js';
 
 import { btnCollapse, resizeEvent } from './functions.js';
@@ -77,8 +79,7 @@ function startApp() {
                     var id = data[i].id,
                         currentQuestion;
                     var email = data[i].answers[45].answer,
-                        fear_response, fear_intro, coaching_link, questions;
-                    console.log(email)
+                        fear_response, fear_intro, questions;
 
                     var SP_slug = location.search.substring(1);
                     let comparingSlug = email;
@@ -97,19 +98,16 @@ function startApp() {
                         if (archetypeType.includes('imposter')) {
                             fear_response = imposter_fear_response;
                             fear_intro = imposter_fear_intro;
-                            coaching_link = imposter_coaching_link;
                             questions = imposter_questions;
                         }
                         if (archetypeType.includes('people pleaser')) {
                             fear_response = peoplePleaser_fear_response;
                             fear_intro = peoplePleaser_fear_intro;
-                            coaching_link = peoplePleaser_coaching_link;
-                            questions =  peoplePleaser_questions;
+                            questions = peoplePleaser_questions;
                         }
                         if (archetypeType.includes('perfectionist')) {
                             fear_response = perfectionist_fear_response;
                             fear_intro = perfectionist_fear_intro;
-                            coaching_link = perfectionist_coaching_link;
                             questions = perfectionist_questions;
                         }
 
@@ -122,22 +120,28 @@ function startApp() {
                         );
                         sectionOne.classList = "results-section results-section--part-one";
                         sectionOne.id = "part-1";
+                        const sectionOneSubTitle = sectionOne.appendChild(
+                            document.createElement("strong")
+                        );
                         const sectionOneTitle = sectionOne.appendChild(
                             document.createElement("h2")
                         );
-                        const sectionOneHR = sectionOne.appendChild(
-                            document.createElement("hr")
+                        sectionOneSubTitle.classList.add('quiz-sub-header');
+                        sectionOneTitle.classList.add('quiz-header');
+                        sectionOneSubTitle.innerHTML = titleMain;
+                        sectionOneTitle.innerHTML = titlePart1;
+
+                        const scoring = sectionOne.appendChild(
+                            document.createElement("h5")
                         );
-                        const sectionOneSubTitle = sectionOne.appendChild(
-                            document.createElement("h3")
-                        );
-                        sectionOneSubTitle.classList = 'text-uppercase';
-                        sectionOneSubTitle.innerHTML = button1;
-                        sectionOneTitle.innerHTML = titleMain + " <strong>" + titlePart1 + "</strong>";
+                        scoring.classList = 'score-label';
+                        scoring.innerHTML = "Your fear archetype is the <strong class='text-uppercase'>" + archetypeType + "</strong>";
+                        
                         const sectionOneLead = sectionOne.appendChild(
                             document.createElement("p")
                         );
-                        sectionOneLead.classList = "lead";
+
+                        sectionOneLead.classList = "quiz-text";
                         sectionOneLead.innerHTML = introduction;
                         const scoresContainer = sectionOne.appendChild(
                             document.createElement("div")
@@ -146,50 +150,49 @@ function startApp() {
                         const scores = scoresContainer.appendChild(
                             document.createElement("h5")
                         );
-                        scores.classList = 'score-label';
+                        scores.classList = 'quiz-strong';
                         scores.innerHTML = "YOUR SCORES:";
                         const scoresList = scoresContainer.appendChild(
                             document.createElement("ul")
                         );
 
-                        const perfectionistPercentageList = scoresList.appendChild(
-                            document.createElement("li")
-                        );
-                        perfectionistPercentageList.innerHTML = "1. PERFECTIONIST: " + perfectionistPercentage + "%";
+                        const archetypeArray = [
+                            {
+                                name: "IMPOSTER",
+                                value: imposterPercentage
+                            },
+                            {
+                                name: "PERFECTIONIST",
+                                value: perfectionistPercentage
+                            },
+                            {
+                                name: "PEOPLE PLEASER",
+                                value: perfectionistPercentage
+                            }
+                        ];
+                        archetypeArray.sort(function (a, b) {
+                            return parseFloat(b.value) - parseFloat(a.value);
+                        });
+                        let archetypeArrayCount = 0;
 
-                        const peoplePleaserPercentageList = scoresList.appendChild(
-                            document.createElement("li")
-                        );
-                        peoplePleaserPercentageList.innerHTML = "2. PEOPLE PLEASER: " + peoplePleaserPercentage + "%";
-                        const imposterPercentageList = scoresList.appendChild(
-                            document.createElement("li")
-                        );
-                        imposterPercentageList.innerHTML = "3. IMPOSTER: " + imposterPercentage + "%";
+                        for (const quiz_score of archetypeArray) {
+                            archetypeArrayCount++;
 
-                        const scoringContainer = sectionOne.appendChild(
+                            const quiz_scoreListItem = scoresList.appendChild(
+                                document.createElement("li")
+                            );
+                            quiz_scoreListItem.classList = 'quiz-text';
+                            quiz_scoreListItem.innerHTML = archetypeArrayCount + '. ' + quiz_score.name + ": " + quiz_score.value + "%";  
+
+                        }
+                        const fearIntroContainer = sectionOne.appendChild(
                             document.createElement("div")
                         );
-                        scoringContainer.classList = 'scoring';
-                        const scoring = scoringContainer.appendChild(
-                            document.createElement("h5")
-                        );
-                        scoring.classList = 'score-label';
-                        scoring.innerHTML = "SCORING:";
-                        const archetypeTypeContainer = scoringContainer.appendChild(
-                            document.createElement("span")
-                        );
-                        archetypeTypeContainer.classList = 'font-weight-bold';
-                        archetypeTypeContainer.innerHTML = "Your fear archetype: <strong class='text-uppercase'>" + archetypeType + "</strong><br>";
-
-                        const fearRespose = scoringContainer.appendChild(
-                            document.createElement("span")
-                        );
-                        fearRespose.classList = 'font-weight-bold';
-                        fearRespose.innerHTML = "Your fear response: <strong class='text-uppercase'>" + fear_response + "</strong>";
-
-                        const fearIntro = sectionOne.appendChild(
+                        fearIntroContainer.classList = 'quiz-well';
+                        const fearIntro = fearIntroContainer.appendChild(
                             document.createElement("p")
                         );
+                        fearIntro.classList.add = 'quiz-text';
                         fearIntro.innerHTML = fear_intro;
 
                         const sectionOneBtnContainer = sectionOne.appendChild(
@@ -200,112 +203,74 @@ function startApp() {
                             document.createElement("button")
                         );
                         sectionOneBtn.dataset.target = "#part-2";
-                        sectionOneBtn.classList = "results-section--btn btn-next sqs-block-button-element--medium sqs-button-element--secondary sqs-block-button-element text-uppercase";
-                        sectionOneBtn.innerHTML = button2 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
+                        sectionOneBtn.classList = "results-section--btn btn-next quiz-button text-uppercase";
+                        sectionOneBtn.innerHTML = button2;
 
 
 
 
 
                         // section two
-                        const sectionTwo = resultsPage.appendChild(
-                            document.createElement("div")
-                        );
-                        sectionTwo.classList = "results-section results-section--part-two";
-
-                        sectionTwo.id = "part-2";
-                        const sectionTwoTitle = sectionTwo.appendChild(
-                            document.createElement("h2")
-                        );
-                        sectionTwoTitle.innerHTML = titleMain + " <strong>" + titlePart2 + "</strong>";
-
-                        const sectionTwoHR = sectionTwo.appendChild(
-                            document.createElement("hr")
-                        );
-                        const sectionTwoSubTitle = sectionTwo.appendChild(
-                            document.createElement("h3")
-                        );
-                        sectionTwoSubTitle.classList = 'text-uppercase';
-                        sectionTwoSubTitle.innerHTML = button2;
-
-                        const sectionTwoLead = sectionTwo.appendChild(
-                            document.createElement("p")
-                        );
-                        sectionTwoLead.classList = "lead";
-                        sectionTwoLead.innerHTML = partTwo;
-
-                        const sectionTwoBtnContainer = sectionTwo.appendChild(
-                            document.createElement("div")
-                        );
-                        sectionTwoBtnContainer.classList = 'results-section--btn-container secondary-button-style-solid';
-                        const sectionTwoBtn = sectionTwoBtnContainer.appendChild(
-                            document.createElement("button")
-                        );
-                        sectionTwoBtn.dataset.target = "#part-1";
-                        sectionTwoBtn.classList = "results-section--btn btn-prev sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element text-uppercase";
-                        sectionTwoBtn.innerHTML = button1 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
-
-                        const sectionTwoBtnNext = sectionTwoBtnContainer.appendChild(
-                            document.createElement("button")
-                        );
-                        sectionTwoBtnNext.dataset.target = "#part-1";
-                        sectionTwoBtnNext.classList = "results-section--btn btn-next sqs-block-button-element--medium sqs-button-element--secondary sqs-block-button-element text-uppercase";
-                        sectionTwoBtnNext.innerHTML = button3 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
-
-
-
-                        // Section Three
+                       
                         const sectionThree = resultsPage.appendChild(
                             document.createElement("div")
                         );
+                        sectionThree.id = "#part-2"
                         sectionThree.classList = "results-section results-section--part-three";
 
+
+                        const sectionThreeSubTitle = sectionThree.appendChild(
+                            document.createElement("strong")
+                        );
                         const sectionThreeTitle = sectionThree.appendChild(
                             document.createElement("h2")
                         );
-                        sectionThreeTitle.innerHTML = titleMain + " <strong>" + titlePart3 + "</strong>";
-
-                        const sectionThreeHR = sectionThree.appendChild(
-                            document.createElement("hr")
-                        );
-                        const sectionThreeSubTitle = sectionThree.appendChild(
-                            document.createElement("h3")
-                        );
-                        sectionThreeSubTitle.classList = 'text-uppercase';
-                        sectionThreeSubTitle.innerHTML = button3;
+                        sectionThreeSubTitle.classList.add('quiz-sub-header');
+                        sectionThreeTitle.classList.add('quiz-header');
+                        sectionThreeSubTitle.innerHTML = titleMain;
+                        sectionThreeTitle.innerHTML = titlePart1;
 
                         const sectionThreeLead = sectionThree.appendChild(
-                            document.createElement("h4")
+                            document.createElement("h5")
                         );
-
-                        sectionThreeLead.innerHTML = "Questions for the <strong class='text-uppercase'>" + archetypeType + ":</strong>";
+                        sectionThreeLead.classList = 'score-label';
+                        sectionThreeLead.innerHTML = "How to keep the " + archetypeType + " ARCHETYPE from holding you back:";
                         questions.features.forEach((question, i) => {
                             currentQuestion = question.properties.question;
                             const questionContainer = sectionThree.appendChild(
                                 document.createElement("div")
                             );
                             const questionh3 = questionContainer.appendChild(
-                                document.createElement("h3")
+                                document.createElement("strong")
                             );
-                            questionh3.innerHTML = "<strong>"+currentQuestion+"</strong>";
+                            questionh3.classList ='quiz-strong'; 
+                            questionh3.innerHTML = currentQuestion;
 
                             const listContainer = questionContainer.appendChild(
                                 document.createElement("ul")
                             );
+                            listContainer.classList = "quiz-list";
                             question.properties.list.forEach((listItem, i) => {
                                 const listItemContainer = listContainer.appendChild(
                                     document.createElement("li")
                                 );
-
+                                listItemContainer.classList = 'quiz-text';
                                 listItemContainer.innerHTML = listItem;
                             })
 
                         });
-                        const partThreeContainer = sectionThree.appendChild(
-                            document.createElement("p")
+
+                        const finalsteps = sectionThree.appendChild(
+                            document.createElement("strong")
                         );
-                        let coachingLink = "<a href="+coaching_link+">Learn more about coaching.</a>";
-                        partThreeContainer.innerHTML = partThree + " " + coachingLink;
+                        finalsteps.classList ='quiz-strong'; 
+                        finalsteps.innerHTML = 'NEXT STEPS: Interested in Learning More?';
+                        const partThreeContainer = sectionThree.appendChild(
+                            document.createElement("ul")
+                        );
+                        
+                        partThreeContainer.classList = "quiz-list";
+                        partThreeContainer.innerHTML = partThree;
                         const sectionThreeBtnContainer = sectionThree.appendChild(
                             document.createElement("div")
                         );
@@ -313,33 +278,47 @@ function startApp() {
                         const sectionThreeBtn = sectionThreeBtnContainer.appendChild(
                             document.createElement("button")
                         );
-                        sectionThreeBtn.dataset.target = "#part-2";
-                        sectionThreeBtn.classList = "results-section--btn btn-prev sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element text-uppercase";
-                        sectionThreeBtn.innerHTML = button2 + ": <span class='text-uppercase'>" + archetypeType + "</span>";
+                        sectionThreeBtn.dataset.target = "#part-1";
+                        sectionThreeBtn.classList = "quiz-button";
+                        sectionThreeBtn.innerHTML = button1;
 
-                        const sectionThreeCTA = sectionThreeBtnContainer.appendChild(
+                        const sectionThreeCTAContainer = sectionThreeBtnContainer.appendChild(
+                            document.createElement("div")
+                        );
+
+
+
+
+                        const sectionThreeBookCTA = sectionThreeCTAContainer.appendChild(
                             document.createElement("button")
                         );
-                        sectionThreeCTA.href = coaching_link;
-                        sectionThreeCTA.classList = "sqs-block-button-element--medium sqs-button-element--primary take-assement-btn sqs-block-button-element text-uppercase";
-                        sectionThreeCTA.innerHTML = "learn more";
+                        sectionThreeBookCTA.href = book_link;
+
+                        sectionThreeBookCTA.classList = "quiz-button";
+                        sectionThreeBookCTA.innerHTML = "Read the book";
+
+
+
+                        const sectionThreeCoachingCTA = sectionThreeCTAContainer.appendChild(
+                            document.createElement("button")
+                        );
+                        sectionThreeCoachingCTA.href = coaching_link;
+
+                        sectionThreeCoachingCTA.classList = "quiz-button";
+                        sectionThreeCoachingCTA.innerHTML = "Find a coach";
+
+
 
                         sectionOne.style.maxHeight = sectionOne.scrollHeight + "px";
                         sectionOne.classList.add("active");
-                        sectionTwo.style.maxHeight = null;
                         sectionThree.style.maxHeight = null;
 
                         sectionOneBtn.addEventListener("click", function () {
-                            btnCollapse(sectionTwo, sectionOne)
+                            btnCollapse(sectionThree, sectionOne)
                         });
-                        sectionTwoBtn.addEventListener("click", function () {
-                            btnCollapse(sectionOne, sectionTwo)
-                        });
-                        sectionTwoBtnNext.addEventListener("click", function () {
-                            btnCollapse(sectionThree, sectionTwo)
-                        });
+       
                         sectionThreeBtn.addEventListener("click", function () {
-                            btnCollapse(sectionTwo, sectionThree)
+                            btnCollapse(sectionOne, sectionThree)
                         });
                         window.addEventListener("resize", function () {
                             resizeEvent();

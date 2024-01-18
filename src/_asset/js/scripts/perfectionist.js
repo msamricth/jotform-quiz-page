@@ -1,18 +1,13 @@
 const perfectionist_fear_response = 'FREEZE',
 
-    perfectionist_fear_intro = "The <strong>PERFECTIONIST</strong> archetype has a core fear of being wrong or not accepted. This often results in diﬃculty making decisions, to the point of ‘freezing’. At times this leader will over focus on scrutinizing the work of the team, utilizing expert detail orientation, rather than making the hard calls. Process is important to perfectionists, but this may slow things down too much, creating conditions in a team that lead to turmoil. Perfectionists ﬁnd that over time their teams step back from making decisions or taking responsibility, because their leader does not allow enough autonomy. Ultimately, the PERFECTIONIST may ﬁnd themselves in rather extreme levels of stress as responsibility grows and knowing every detail, or making every decision, is just not realistic. ",
+    perfectionist_fear_intro = "The PERFECTIONIST ARCHETYPE has a core fear of being wrong or not accepted. This often results in diﬃculty making decisions, to the point of ‘freezing’. At times this leader will scrutinize the work of the team and delve into every little detail instead of making hard decisions. <br> <br>Perfectionists may ﬁnd that over time their teams start to avoid making decisions or taking responsibility, because their leader does not allow enough autonomy. Ultimately, the PERFECTIONIST may ﬁnd themselves in rather extreme levels of stress as responsibility grows and exhausting every detail and making every decision is just not realistic. ",
     
     perfectionist_coaching_link = '#',
-    question_set1 = ["Now that we’ve named your fear, what may be behind it? (understanding the origin can make the fear your ally!)",
-    "Who can you involve to have a conversation around this?",
-    "How can you make this fear your ally - having a tendency to be a perfectionist means you are very careful and thoughtful - how might you use this without letting it take you to the FREEZE extreme?",
-    "What would it look like to make an informed decision with some amount of ambiguity? Who could hold you accountable?"],
+    question_set1 = ["<strong>Get Honest:</strong> How does the ‘FREEZE’ reaction drive you to be overly detailed or indecisive? Where have you seen that behavior in yourself in recent months?","<strong>Get Feedback:</strong> Ask a team member you can trust, in what ways have you let “Perfect be the enemy of Good?” How have you been slow to make hard decisions"],
 
-    question_set2 = ["How might you share your fear with your team, and ask how it’s affecting them?",
-        "How does People Pleasing drive you to avoid giving feedback, or hold people accountable? How might you change this?",
-        "Are you over using consensus, rather than sharing bad news or making the call yourself? How might you change this?"],
+    question_set2 = ["<strong>Find Your Superpower:</strong> Your eye for detail and quality is likely a strength. How can you talk to your team about leveraging that superpower of yours? In what ways is it useful?"],
 
-    question_set3 = ["How might you share your fear with your team, and ask how it’s affecting them?", "What do you want to do next time you see fear raising its ugly head?", "How does Perfectionism drive you to delay decisions, or overuse process? What would be different if you tried something besides freezing?", "The next time you are receiving feedback for not knowing something in your team, what would happen if you stayed open and curious?"];
+    question_set3 = ["<strong>Look in the Mirror:</strong> Who on your team can hold up a mirror for you when you take your superpower too far and start to get too micro-managing or you are too slow to make decisions?","<strong>Confront the Fear:</strong> How can you identify what is causing you to feel fear in that moment? How true is that fear? How can you use that energy to feel motivated rather than fearful?"];
 
 
 
@@ -23,25 +18,24 @@ var perfectionist_questions = {
 perfectionist_questions.features.push({
     type: "Feature",
     properties: {
-        question: "How does this Fear Archetype affect you?",
+        question: "STEP 1: Determine how fear affects the way you show up at work",
         list: question_set1
     }
 });
 perfectionist_questions.features.push({
     type: "Feature",
     properties: {
-        question: "How does this Fear Archetype affect the way you show up for your team?",
+        question: "STEP 2: Make your fear your ally",
         list: question_set2
     }
 });
 perfectionist_questions.features.push({
     type: "Feature",
     properties: {
-        question: "How do you see this fear in your team?",
+        question: "STEP 3: Ask someone to hold you accountable",
         list: question_set3
     }
 });
-
 export {
     perfectionist_fear_response,
     perfectionist_fear_intro,
