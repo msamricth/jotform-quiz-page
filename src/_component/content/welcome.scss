@@ -103,11 +103,13 @@ html {
     line-height: 24px;
     /* 150% */
   }
-
+  .landing .quiz-button {
+    display: inline;
+    background-color: #59729D;
+    color: var(--White, #FFF);
+  }
   .results-section,
   .landing {
-
-
 
     &--part-two {
       .results-section--btn-container {
