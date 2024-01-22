@@ -3,7 +3,7 @@
     .results-page,
     .landing {
         .text-uppercase {
-            text-transform: uppercase !important;
+            text-transform: capitalize !important;
         }
 
         .text-capitalize {
@@ -95,3 +95,8 @@ p.quiz-text {
         opacity: .8;
     }
 }
+
+.quiz-button.quiz-primary {
+    background-color: #59729D;
+    color: var(--White, #FFF);
+  }
